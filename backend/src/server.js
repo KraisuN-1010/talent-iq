@@ -9,13 +9,12 @@ app.get("/health", (req, res) => {
   res.status(200).json({msg:"This is the health check endpoint"})
 }) 
 
-//make app ready for production
-if (ENV.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")))
-  app.get("/{*any}", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"))
-  })
-}
+// Serve static files and handle SPA routing for all environments (not just production)
+app.use(express.static(path.join(__dirname, "../frontend/dist")))
+app.get("/{*any}", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"))
+})
+
 app.listen(ENV.PORT, () => {
   console.log("Server running on", ENV.PORT)
 })
