@@ -10,8 +10,11 @@ const syncUser = inngest.createFunction(
   async ({ event }) => {
     try {
       await connectDB()
-      const { name, email, profileImageUrl, id: clerkId } = event.data
-      const user = new User({ name, email, profileImage: profileImageUrl, clerkId })
+      const { first_name, last_name, email_addresses, primary_email_address_id, profile_image_url, id: clerkId } = event.data
+      const name = `${first_name} ${last_name}`
+      const email = email_addresses.find(addr => addr.id === primary_email_address_id)?.email_address
+      const profileImage = profile_image_url
+      const user = new User({ name, email, profileImage, clerkId })
       await user.save()
       console.log("User synced successfully:", user)
     } catch (error) {
