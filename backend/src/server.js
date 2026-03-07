@@ -3,6 +3,7 @@ import path from "path"
 import connectDB from "./lib/db.js"
 import cors from "cors"
 import { serve } from "inngest/express"
+import { inngest, functions } from "./lib/innjest.js"
 import { ENV } from "./lib/env.js"
 
 const app = express()
