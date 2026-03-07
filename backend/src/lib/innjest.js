@@ -1,7 +1,7 @@
 import { Inngest } from "inngest"
 import connectDB from "./db.js"
 import User from "../models/User.js"
-import { upssertStreamUser, deleteUser } from "./stream.js";
+import { upssertStreamUser, deleteStreamUser } from "./stream.js";
 
 export const inngest = new Inngest({ id : "talent-iq" });
 
@@ -42,7 +42,7 @@ const deleteUser = inngest.createFunction(
       // Delete user from MongoDB
       await User.deleteOne({ clerkId })
       // Delete user from Stream as well
-      await deleteUser(clerkId.toString());
+      await deleteStreamUser(clerkId.toString());
       console.log("User deleted successfully")
     } catch (error) {
       console.error("Error deleting user:", error)

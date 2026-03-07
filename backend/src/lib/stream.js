@@ -19,7 +19,7 @@ export const upssertStreamUser = async (userData) => {
   } 
 };
 
-export const deleteUser = async (userId) => {
+export const deleteStreamUser = async (userId) => {
   try {
     await chatClient.deleteUser(userId);     
   } catch (error) {
