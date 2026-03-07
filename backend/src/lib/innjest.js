@@ -1,6 +1,7 @@
 import { Inngest } from "inngest"
 import connectDB from "./db.js"
 import User from "../models/User.js"
+import { upssertStreamUser, deleteUser } from "./stream.js";
 
 export const inngest = new Inngest({ id : "talent-iq" });
 
@@ -15,7 +16,14 @@ const syncUser = inngest.createFunction(
       const email = email_addresses.find(addr => addr.id === primary_email_address_id)?.email_address
       const profileImage = profile_image_url
       const user = new User({ name, email, profileImage, clerkId })
+      
+      // Save user to MongoDB
       await user.save()
+      
+      //Add User to Stream as well
+      await upssertStreamUser({ id: clerkId, name, email, image: profileImage })  
+
+      
       console.log("User synced successfully:", user)
     } catch (error) {
       console.error("Error syncing user:", error)
@@ -30,7 +38,11 @@ const deleteUser = inngest.createFunction(
     try {
       await connectDB()
       const { id: clerkId } = event.data
+      
+      // Delete user from MongoDB
       await User.deleteOne({ clerkId })
+      // Delete user from Stream as well
+      await deleteUser(clerkId.toString());
       console.log("User deleted successfully")
     } catch (error) {
       console.error("Error deleting user:", error)
