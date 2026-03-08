@@ -12,6 +12,8 @@ export async function getStreamToken(req, res) {
       profileImage: req.user.profileImage
     })
   } catch (error) {
-    res.status(500).json({ message: "Failed to create Stream token", error: error.message })
+    console.error("Failed to create Stream token:", error);
+    res.status(500).json({ message: "Failed to create Stream token" })
+  }
   }
 }
