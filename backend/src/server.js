@@ -2,13 +2,16 @@ import express from "express"
 import path from "path"
 import connectDB from "./lib/db.js"
 import cors from "cors"
+import chatRoutes from "./routes/chatRoutes.js"
 import { serve } from "inngest/express"
 import { inngest, functions } from "./lib/innjest.js"
+import { clerkMiddleware } from "@clerk/express"
 import { ENV } from "./lib/env.js"
+import { protectRoute } from "./middleware/protectRoute.js"
 
 const app = express()
 const __dirname = path.resolve()
-
+app.use(clerkMiddleware())
 //middleware
 
 app.use(express.json()) // Parse JSON request bodies
@@ -16,10 +19,16 @@ app.use(express.json()) // Parse JSON request bodies
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true })) // Enable CORS for all routes
 
 app.use("/api/inngest", serve({ client: inngest, functions })); // Inngest endpoint for handling events
+app.use("/api/chat", chatRoutes)
 
 app.get("/health", (req, res) => {
   res.status(200).json({msg:"This is the health check endpoint"})
 }) 
+
+app.get("/video-call", protectRoute, (req, res) => {
+  res.status(200).json({msg:"This is the video call endpoint"})
+}
+)
 
 // Serve static files and handle SPA routing for all environments (not just production)
 app.use(express.static(path.join(__dirname, "../frontend/dist")))
