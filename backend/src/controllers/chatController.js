@@ -2,7 +2,6 @@ import { chatClient } from "../lib/stream.js"
 
 export async function getStreamToken(req, res) {
   try {
-    //Use clerkId for authentication because it should match the id in stream 
     const token = chatClient.createToken(req.user.clerkId);
     res.status(200).json({
       token, 
@@ -14,6 +13,5 @@ export async function getStreamToken(req, res) {
   } catch (error) {
     console.error("Failed to create Stream token:", error);
     res.status(500).json({ message: "Failed to create Stream token" })
-  }
   }
 }
