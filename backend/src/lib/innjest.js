@@ -29,6 +29,10 @@ const syncUser = inngest.createFunction(
       console.error("Error syncing user:", error)
     } 
   }
+
+  //Challange: Send a welcome email to the user after they are created
+  //Challange: 
+  //Challange: Create a function that listens to user updates and syncs the changes to MongoDB and Stream
 );
 
 const deleteUser = inngest.createFunction(
@@ -48,6 +52,9 @@ const deleteUser = inngest.createFunction(
       console.error("Error deleting user:", error)
     }
   }
+
+  //Challange: When a user is deleted, also remove them from any active video calls they are part of (if applicable)
+  //Challange: When a user is delete, semd a mail to the user notifying them of the deletion
 );
 
 export const functions = [syncUser, deleteUser]
