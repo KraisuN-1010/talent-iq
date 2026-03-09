@@ -3,6 +3,7 @@ import path from "path"
 import connectDB from "./lib/db.js"
 import cors from "cors"
 import chatRoutes from "./routes/chatRoutes.js"
+import sessionRoutes from "./routes/sessionRoutes.js"
 import { serve } from "inngest/express"
 import { inngest, functions } from "./lib/innjest.js"
 import { clerkMiddleware } from "@clerk/express"
@@ -20,6 +21,8 @@ app.use(cors({ origin: ENV.CLIENT_URL, credentials: true })) // Enable CORS for 
 
 app.use("/api/inngest", serve({ client: inngest, functions })); // Inngest endpoint for handling events
 app.use("/api/chat", chatRoutes)
+app.use("/api/sessions", sessionRoutes)
+
 
 app.get("/health", (req, res) => {
   res.status(200).json({msg:"This is the health check endpoint"})
