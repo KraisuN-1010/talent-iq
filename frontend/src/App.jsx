@@ -1,27 +1,21 @@
-import { SignUpButton, SignOutButton, SignedIn, SignedOut, useUser, UserButton } from '@clerk/clerk-react'
-import { Routes, Route } from 'react-router'  // ✅ added for routing support
+import { useUser } from '@clerk/clerk-react'
+import { Routes, Route, Navigate } from 'react-router'
 import HomePage from './pages/HomePage.jsx'
 import ProblemsPage from './pages/ProblemsPage.jsx'
+import DashboardPage from './pages/DashboardPage.jsx'
 import { Toaster } from 'react-hot-toast'
 
+const App = () => {
+  const { isSignedIn, isLoaded } = useUser()
 
-/**
- * Render the application's root UI with authentication-aware content.
- *
- * When a user is signed in, displays a greeting using the user's first name
- * or first email address and a sign-out control; when signed out, displays
- * a sign-up control. Always includes a user profile button.
- *
- * @returns {JSX.Element} The root React element containing the authentication-driven UI.
- */
-function App() {
-  const { isSignedIn } = useUser()  // ✅ this was missing
+  if (!isLoaded) return null;
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/problems" element={isSignedIn ? <ProblemsPage /> : <HomePage />} />
+        <Route path="/" element={isSignedIn ? <Navigate to="/dashboard" /> : <HomePage />} />
+        <Route path="/problems" element={isSignedIn ? <ProblemsPage /> : <Navigate to="/" />} />
+        <Route path="/dashboard" element={isSignedIn ? <DashboardPage /> : <Navigate to="/" />} />
       </Routes>
       <Toaster position="top-right" reverseOrder={false} />
     </>
