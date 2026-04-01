@@ -1,5 +1,9 @@
-import './App.css'
 import { SignUpButton, SignOutButton, SignedIn, SignedOut, useUser, UserButton } from '@clerk/clerk-react'
+import { Routes, Route } from 'react-router'  // ✅ added for routing support
+import HomePage from './pages/HomePage.jsx'
+import ProblemsPage from './pages/ProblemsPage.jsx'
+import { Toaster } from 'react-hot-toast'
+
 
 /**
  * Render the application's root UI with authentication-aware content.
@@ -11,21 +15,16 @@ import { SignUpButton, SignOutButton, SignedIn, SignedOut, useUser, UserButton }
  * @returns {JSX.Element} The root React element containing the authentication-driven UI.
  */
 function App() {
-  const { user } = useUser()  // ✅ this was missing
+  const { isSignedIn } = useUser()  // ✅ this was missing
 
   return (
-    <div className="App">
-      <h1>Welcome to Vite + React</h1>
-        <SignedIn>
-          <p>Hello, {user?.firstName ?? user?.emailAddresses[0].emailAddress}!</p>
-          <SignOutButton />
-        </SignedIn>
-        
-        <SignedOut>
-          <SignUpButton mode="redirect"></SignUpButton>
-        </SignedOut>
-        <UserButton /> {/* ✅ added UserButton for user profile access */}
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/problems" element={isSignedIn ? <ProblemsPage /> : <HomePage />} />
+      </Routes>
+      <Toaster position="top-right" reverseOrder={false} />
+    </>
   )
 }
 
