@@ -6,22 +6,21 @@ import { ChevronRightIcon, Code2Icon, SearchIcon, XIcon } from "lucide-react";
 import { getDifficultyBadgeClass } from "../lib/utils";
 
 const DIFFICULTIES = ["All", "Easy", "Medium", "Hard"];
+const problems = Object.values(PROBLEMS);
+
+const allTopics = (() => {
+  const topicSet = new Set();
+  problems.forEach((p) => {
+    p.category.split(" • ").forEach((t) => topicSet.add(t.trim()));
+  });
+  return [...topicSet].sort();
+})();
 
 const ProblemsPage = () => {
-  const problems = Object.values(PROBLEMS);
 
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState("All");
   const [selectedTopics, setSelectedTopics] = useState([]); // array, not single value
-
-  // Derive all unique topics from every problem's category field
-  const allTopics = useMemo(() => {
-    const topicSet = new Set();
-    problems.forEach((p) => {
-      p.category.split(" • ").forEach((t) => topicSet.add(t.trim()));
-    });
-    return [...topicSet].sort();
-  }, [problems]);
 
   // Toggle a topic on/off
   const toggleTopic = (topic) => {
