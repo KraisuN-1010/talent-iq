@@ -5,11 +5,6 @@ import { UserButton } from "@clerk/clerk-react";
 const Navbar = () => {
   const location = useLocation();
 
-const Navbar = () => {
-  const location = useLocation();
-
-  const isActive = (path) => location.pathname === path;
-
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -77,4 +72,5 @@ const Navbar = () => {
     </nav>
   );
 }
+
 export default Navbar;
