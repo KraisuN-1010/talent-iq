@@ -8,11 +8,19 @@ export async function executeCode(language, code) {
       body: JSON.stringify({ language, code }),
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.output || `Server error: ${response.statusText}`);
+    const rawBody = await response.text();
+    let result = {};
+    try {
+      result = rawBody ? JSON.parse(rawBody) : {};
+    } catch {
+      result = {};
     }
-    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        result.output || rawBody || `Server error: ${response.status} ${response.statusText}`
+      );
+    }
     
     return {
       success: result.success,
