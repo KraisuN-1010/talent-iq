@@ -51,11 +51,43 @@ print(maxProfit([7,6,4,3,1]))    # Expected: 0`,
         System.out.println(maxProfit(new int[]{7,6,4,3,1}));   // Expected: 0
     }
 }`,
+      c: `#include <stdio.h>
+
+int maxProfit(int* prices, int pricesSize) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    int p1[] = {7,1,5,3,6,4};
+    printf("%d\\n", maxProfit(p1, 6)); // Expected: 5
+    int p2[] = {7,6,4,3,1};
+    printf("%d\\n", maxProfit(p2, 5)); // Expected: 0
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int maxProfit(vector<int>& prices) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    vector<int> p1 = {7,1,5,3,6,4};
+    cout << maxProfit(p1) << endl; // Expected: 5
+    vector<int> p2 = {7,6,4,3,1};
+    cout << maxProfit(p2) << endl; // Expected: 0
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "5\n0",
       python: "5\n0",
       java: "5\n0",
+      c: "5\n0",
+      cpp: "5\n0",
     },
   },
 
@@ -69,18 +101,9 @@ print(maxProfit([7,6,4,3,1]))    # Expected: 0`,
       notes: [],
     },
     examples: [
-      {
-        input: "nums = [1,2,3,1]",
-        output: "true",
-      },
-      {
-        input: "nums = [1,2,3,4]",
-        output: "false",
-      },
-      {
-        input: "nums = [1,1,1,3,3,4,3,2,4,2]",
-        output: "true",
-      },
+      { input: "nums = [1,2,3,1]", output: "true" },
+      { input: "nums = [1,2,3,4]", output: "false" },
+      { input: "nums = [1,1,1,3,3,4,3,2,4,2]", output: "true" },
     ],
     constraints: ["1 ≤ nums.length ≤ 10⁵", "-10⁹ ≤ nums[i] ≤ 10⁹"],
     starterCode: {
@@ -90,16 +113,16 @@ print(maxProfit([7,6,4,3,1]))    # Expected: 0`,
 }
 
 // Test cases
-console.log(containsDuplicate([1,2,3,1]));           // Expected: true
-console.log(containsDuplicate([1,2,3,4]));           // Expected: false
+console.log(containsDuplicate([1,2,3,1]));            // Expected: true
+console.log(containsDuplicate([1,2,3,4]));            // Expected: false
 console.log(containsDuplicate([1,1,1,3,3,4,3,2,4,2])); // Expected: true`,
       python: `def containsDuplicate(nums):
     # Write your solution here
     pass
 
 # Test cases
-print(containsDuplicate([1,2,3,1]))             # Expected: True
-print(containsDuplicate([1,2,3,4]))             # Expected: False
+print(containsDuplicate([1,2,3,1]))              # Expected: True
+print(containsDuplicate([1,2,3,4]))              # Expected: False
 print(containsDuplicate([1,1,1,3,3,4,3,2,4,2])) # Expected: True`,
       java: `import java.util.*;
 
@@ -110,16 +133,53 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(containsDuplicate(new int[]{1,2,3,1}));                   // Expected: true
-        System.out.println(containsDuplicate(new int[]{1,2,3,4}));                   // Expected: false
-        System.out.println(containsDuplicate(new int[]{1,1,1,3,3,4,3,2,4,2}));      // Expected: true
+        System.out.println(containsDuplicate(new int[]{1,2,3,1}));                  // Expected: true
+        System.out.println(containsDuplicate(new int[]{1,2,3,4}));                  // Expected: false
+        System.out.println(containsDuplicate(new int[]{1,1,1,3,3,4,3,2,4,2}));     // Expected: true
     }
+}`,
+      c: `#include <stdio.h>
+#include <stdbool.h>
+
+bool containsDuplicate(int* nums, int numsSize) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    int a[] = {1,2,3,1};
+    printf("%s\\n", containsDuplicate(a, 4) ? "true" : "false"); // Expected: true
+    int b[] = {1,2,3,4};
+    printf("%s\\n", containsDuplicate(b, 4) ? "true" : "false"); // Expected: false
+    int c[] = {1,1,1,3,3,4,3,2,4,2};
+    printf("%s\\n", containsDuplicate(c, 10) ? "true" : "false"); // Expected: true
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+bool containsDuplicate(vector<int>& nums) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    vector<int> a = {1,2,3,1};
+    cout << (containsDuplicate(a) ? "true" : "false") << endl; // Expected: true
+    vector<int> b = {1,2,3,4};
+    cout << (containsDuplicate(b) ? "true" : "false") << endl; // Expected: false
+    vector<int> c = {1,1,1,3,3,4,3,2,4,2};
+    cout << (containsDuplicate(c) ? "true" : "false") << endl; // Expected: true
+    return 0;
 }`,
     },
     expectedOutput: {
       javascript: "true\nfalse\ntrue",
       python: "True\nFalse\nTrue",
       java: "true\nfalse\ntrue",
+      c: "true\nfalse\ntrue",
+      cpp: "true\nfalse\ntrue",
     },
   },
 
@@ -142,14 +202,8 @@ class Solution {
         output: "[1,2,2,3,5,6]",
         explanation: "The arrays we are merging are [1,2,3] and [2,5,6]. The result of the merge is [1,2,2,3,5,6].",
       },
-      {
-        input: "nums1 = [1], m = 1, nums2 = [], n = 0",
-        output: "[1]",
-      },
-      {
-        input: "nums1 = [0], m = 0, nums2 = [1], n = 1",
-        output: "[1]",
-      },
+      { input: "nums1 = [1], m = 1, nums2 = [], n = 0", output: "[1]" },
+      { input: "nums1 = [0], m = 0, nums2 = [1], n = 1", output: "[1]" },
     ],
     constraints: [
       "nums1.length == m + n",
@@ -213,11 +267,72 @@ class Solution {
         System.out.println(Arrays.toString(c)); // Expected: [1]
     }
 }`,
+      c: `#include <stdio.h>
+
+void merge(int* nums1, int m, int* nums2, int n) {
+    // Write your solution here
+}
+
+void printArray(int* arr, int size) {
+    printf("[");
+    for (int i = 0; i < size; i++) {
+        printf("%d%s", arr[i], i < size - 1 ? "," : "");
+    }
+    printf("]\\n");
+}
+
+int main() {
+    int a[] = {1,2,3,0,0,0};
+    int b[] = {2,5,6};
+    merge(a, 3, b, 3);
+    printArray(a, 6); // Expected: [1,2,2,3,5,6]
+
+    int c[] = {1};
+    merge(c, 1, NULL, 0);
+    printArray(c, 1); // Expected: [1]
+
+    int d[] = {0};
+    int e[] = {1};
+    merge(d, 0, e, 1);
+    printArray(d, 1); // Expected: [1]
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    // Write your solution here
+}
+
+void printVec(vector<int>& v) {
+    cout << "[";
+    for (int i = 0; i < v.size(); i++)
+        cout << v[i] << (i < v.size()-1 ? "," : "");
+    cout << "]" << endl;
+}
+
+int main() {
+    vector<int> a = {1,2,3,0,0,0}, b = {2,5,6};
+    merge(a, 3, b, 3);
+    printVec(a); // Expected: [1,2,2,3,5,6]
+
+    vector<int> c = {1}, d = {};
+    merge(c, 1, d, 0);
+    printVec(c); // Expected: [1]
+
+    vector<int> e = {0}, f = {1};
+    merge(e, 0, f, 1);
+    printVec(e); // Expected: [1]
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "[1,2,2,3,5,6]\n[1]\n[1]",
       python: "[1, 2, 2, 3, 5, 6]\n[1]\n[1]",
       java: "[1, 2, 2, 3, 5, 6]\n[1]\n[1]",
+      c: "[1,2,2,3,5,6]\n[1]\n[1]",
+      cpp: "[1,2,2,3,5,6]\n[1]\n[1]",
     },
   },
 
@@ -231,16 +346,8 @@ class Solution {
       notes: [],
     },
     examples: [
-      {
-        input: "n = 2",
-        output: "2",
-        explanation: "There are two ways to climb to the top: 1. 1 step + 1 step  2. 2 steps",
-      },
-      {
-        input: "n = 3",
-        output: "3",
-        explanation: "There are three ways: 1. 1+1+1  2. 1+2  3. 2+1",
-      },
+      { input: "n = 2", output: "2", explanation: "There are two ways to climb to the top: 1. 1 step + 1 step  2. 2 steps" },
+      { input: "n = 3", output: "3", explanation: "There are three ways: 1. 1+1+1  2. 1+2  3. 2+1" },
     ],
     constraints: ["1 ≤ n ≤ 45"],
     starterCode: {
@@ -273,11 +380,40 @@ print(climbStairs(5))  # Expected: 8`,
         System.out.println(climbStairs(5)); // Expected: 8
     }
 }`,
+      c: `#include <stdio.h>
+
+int climbStairs(int n) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    printf("%d\\n", climbStairs(2)); // Expected: 2
+    printf("%d\\n", climbStairs(3)); // Expected: 3
+    printf("%d\\n", climbStairs(5)); // Expected: 8
+    return 0;
+}`,
+      cpp: `#include <iostream>
+using namespace std;
+
+int climbStairs(int n) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    cout << climbStairs(2) << endl; // Expected: 2
+    cout << climbStairs(3) << endl; // Expected: 3
+    cout << climbStairs(5) << endl; // Expected: 8
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "2\n3\n8",
       python: "2\n3\n8",
       java: "2\n3\n8",
+      c: "2\n3\n8",
+      cpp: "2\n3\n8",
     },
   },
 
@@ -329,11 +465,43 @@ print(isValid("(]"))      # Expected: False`,
         System.out.println(isValid("(]"));     // Expected: false
     }
 }`,
+      c: `#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool isValid(char* s) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    printf("%s\\n", isValid("()") ? "true" : "false");     // Expected: true
+    printf("%s\\n", isValid("()[]{}") ? "true" : "false"); // Expected: true
+    printf("%s\\n", isValid("(]") ? "true" : "false");     // Expected: false
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <string>
+using namespace std;
+
+bool isValid(string s) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    cout << (isValid("()") ? "true" : "false") << endl;     // Expected: true
+    cout << (isValid("()[]{}") ? "true" : "false") << endl; // Expected: true
+    cout << (isValid("(]") ? "true" : "false") << endl;     // Expected: false
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "true\ntrue\nfalse",
       python: "True\nTrue\nFalse",
       java: "true\ntrue\nfalse",
+      c: "true\ntrue\nfalse",
+      cpp: "true\ntrue\nfalse",
     },
   },
 
@@ -382,11 +550,41 @@ print(isPalindrome(10))    # Expected: False`,
         System.out.println(isPalindrome(10));   // Expected: false
     }
 }`,
+      c: `#include <stdio.h>
+#include <stdbool.h>
+
+bool isPalindrome(int x) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    printf("%s\\n", isPalindrome(121) ? "true" : "false");  // Expected: true
+    printf("%s\\n", isPalindrome(-121) ? "true" : "false"); // Expected: false
+    printf("%s\\n", isPalindrome(10) ? "true" : "false");   // Expected: false
+    return 0;
+}`,
+      cpp: `#include <iostream>
+using namespace std;
+
+bool isPalindrome(int x) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    cout << (isPalindrome(121) ? "true" : "false") << endl;  // Expected: true
+    cout << (isPalindrome(-121) ? "true" : "false") << endl; // Expected: false
+    cout << (isPalindrome(10) ? "true" : "false") << endl;   // Expected: false
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "true\nfalse\nfalse",
       python: "True\nFalse\nFalse",
       java: "true\nfalse\nfalse",
+      c: "true\nfalse\nfalse",
+      cpp: "true\nfalse\nfalse",
     },
   },
 
@@ -412,16 +610,16 @@ print(isPalindrome(10))    # Expected: False`,
 }
 
 // Test cases
-console.log(missingNumber([3,0,1]));           // Expected: 2
-console.log(missingNumber([0,1]));             // Expected: 2
+console.log(missingNumber([3,0,1]));            // Expected: 2
+console.log(missingNumber([0,1]));              // Expected: 2
 console.log(missingNumber([9,6,4,2,3,5,7,0,1])); // Expected: 8`,
       python: `def missingNumber(nums):
     # Write your solution here
     pass
 
 # Test cases
-print(missingNumber([3,0,1]))             # Expected: 2
-print(missingNumber([0,1]))               # Expected: 2
+print(missingNumber([3,0,1]))              # Expected: 2
+print(missingNumber([0,1]))                # Expected: 2
 print(missingNumber([9,6,4,2,3,5,7,0,1])) # Expected: 8`,
       java: `class Solution {
     public static int missingNumber(int[] nums) {
@@ -435,11 +633,47 @@ print(missingNumber([9,6,4,2,3,5,7,0,1])) # Expected: 8`,
         System.out.println(missingNumber(new int[]{9,6,4,2,3,5,7,0,1}));      // Expected: 8
     }
 }`,
+      c: `#include <stdio.h>
+
+int missingNumber(int* nums, int numsSize) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    int a[] = {3,0,1};
+    printf("%d\\n", missingNumber(a, 3)); // Expected: 2
+    int b[] = {0,1};
+    printf("%d\\n", missingNumber(b, 2)); // Expected: 2
+    int c[] = {9,6,4,2,3,5,7,0,1};
+    printf("%d\\n", missingNumber(c, 9)); // Expected: 8
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int missingNumber(vector<int>& nums) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    vector<int> a = {3,0,1};
+    cout << missingNumber(a) << endl; // Expected: 2
+    vector<int> b = {0,1};
+    cout << missingNumber(b) << endl; // Expected: 2
+    vector<int> c = {9,6,4,2,3,5,7,0,1};
+    cout << missingNumber(c) << endl; // Expected: 8
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "2\n2\n8",
       python: "2\n2\n8",
       java: "2\n2\n8",
+      c: "2\n2\n8",
+      cpp: "2\n2\n8",
     },
   },
 
@@ -487,11 +721,39 @@ class Solution {
         System.out.println(fizzBuzz(5)); // Expected: [1, 2, Fizz, 4, Buzz]
     }
 }`,
+      c: `#include <stdio.h>
+
+void fizzBuzz(int n) {
+    // Write your solution here (print each element on its own line)
+}
+
+int main() {
+    printf("n=3:\\n"); fizzBuzz(3); // Expected: 1 2 Fizz
+    printf("n=5:\\n"); fizzBuzz(5); // Expected: 1 2 Fizz 4 Buzz
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+vector<string> fizzBuzz(int n) {
+    // Write your solution here
+    return {};
+}
+
+int main() {
+    for (auto& s : fizzBuzz(3)) cout << s << " "; cout << endl; // Expected: 1 2 Fizz
+    for (auto& s : fizzBuzz(5)) cout << s << " "; cout << endl; // Expected: 1 2 Fizz 4 Buzz
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: '["1","2","Fizz"]\n["1","2","Fizz","4","Buzz"]',
       python: "['1', '2', 'Fizz']\n['1', '2', 'Fizz', '4', 'Buzz']",
       java: "[1, 2, Fizz]\n[1, 2, Fizz, 4, Buzz]",
+      c: "1 2 Fizz\n1 2 Fizz 4 Buzz",
+      cpp: "1 2 Fizz\n1 2 Fizz 4 Buzz",
     },
   },
 
@@ -536,11 +798,45 @@ print(longestCommonPrefix(["dog","racecar","car"]))     # Expected: ""`,
         System.out.println(longestCommonPrefix(new String[]{"dog","racecar","car"}));    // Expected: (empty)
     }
 }`,
+      c: `#include <stdio.h>
+#include <string.h>
+
+char* longestCommonPrefix(char** strs, int strsSize) {
+    // Write your solution here
+    return "";
+}
+
+int main() {
+    char* a[] = {"flower","flow","flight"};
+    printf("%s\\n", longestCommonPrefix(a, 3)); // Expected: fl
+    char* b[] = {"dog","racecar","car"};
+    printf("%s\\n", longestCommonPrefix(b, 3)); // Expected: (empty)
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+string longestCommonPrefix(vector<string>& strs) {
+    // Write your solution here
+    return "";
+}
+
+int main() {
+    vector<string> a = {"flower","flow","flight"};
+    cout << longestCommonPrefix(a) << endl; // Expected: fl
+    vector<string> b = {"dog","racecar","car"};
+    cout << longestCommonPrefix(b) << endl; // Expected: (empty)
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "fl\n",
       python: "fl\n",
       java: "fl\n",
+      c: "fl\n",
+      cpp: "fl\n",
     },
   },
 
@@ -566,9 +862,9 @@ print(longestCommonPrefix(["dog","racecar","car"]))     # Expected: ""`,
 }
 
 // Test cases
-console.log(singleNumber([2,2,1]));       // Expected: 1
-console.log(singleNumber([4,1,2,1,2]));   // Expected: 4
-console.log(singleNumber([1]));           // Expected: 1`,
+console.log(singleNumber([2,2,1]));      // Expected: 1
+console.log(singleNumber([4,1,2,1,2]));  // Expected: 4
+console.log(singleNumber([1]));          // Expected: 1`,
       python: `def singleNumber(nums):
     # Write your solution here
     pass
@@ -589,11 +885,47 @@ print(singleNumber([1]))          # Expected: 1`,
         System.out.println(singleNumber(new int[]{1}));         // Expected: 1
     }
 }`,
+      c: `#include <stdio.h>
+
+int singleNumber(int* nums, int numsSize) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    int a[] = {2,2,1};
+    printf("%d\\n", singleNumber(a, 3)); // Expected: 1
+    int b[] = {4,1,2,1,2};
+    printf("%d\\n", singleNumber(b, 5)); // Expected: 4
+    int c[] = {1};
+    printf("%d\\n", singleNumber(c, 1)); // Expected: 1
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int singleNumber(vector<int>& nums) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    vector<int> a = {2,2,1};
+    cout << singleNumber(a) << endl; // Expected: 1
+    vector<int> b = {4,1,2,1,2};
+    cout << singleNumber(b) << endl; // Expected: 4
+    vector<int> c = {1};
+    cout << singleNumber(c) << endl; // Expected: 1
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "1\n4\n1",
       python: "1\n4\n1",
       java: "1\n4\n1",
+      c: "1\n4\n1",
+      cpp: "1\n4\n1",
     },
   },
 
@@ -623,8 +955,8 @@ print(singleNumber([1]))          # Expected: 1`,
 }
 
 // Test cases
-console.log(productExceptSelf([1,2,3,4]));       // Expected: [24,12,8,6]
-console.log(productExceptSelf([-1,1,0,-3,3]));   // Expected: [0,0,9,0,0]`,
+console.log(productExceptSelf([1,2,3,4]));      // Expected: [24,12,8,6]
+console.log(productExceptSelf([-1,1,0,-3,3]));  // Expected: [0,0,9,0,0]`,
       python: `def productExceptSelf(nums):
     # Write your solution here
     pass
@@ -641,15 +973,54 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(productExceptSelf(new int[]{1,2,3,4})));      // Expected: [24, 12, 8, 6]
-        System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3}))); // Expected: [0, 0, 9, 0, 0]
+        System.out.println(Arrays.toString(productExceptSelf(new int[]{1,2,3,4})));       // Expected: [24, 12, 8, 6]
+        System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));  // Expected: [0, 0, 9, 0, 0]
     }
+}`,
+      c: `#include <stdio.h>
+#include <stdlib.h>
+
+int* productExceptSelf(int* nums, int numsSize, int* returnSize) {
+    // Write your solution here
+    *returnSize = numsSize;
+    return (int*)calloc(numsSize, sizeof(int));
+}
+
+int main() {
+    int a[] = {1,2,3,4}, szA;
+    int* ra = productExceptSelf(a, 4, &szA);
+    for (int i = 0; i < szA; i++) printf("%d%s", ra[i], i<szA-1?",":""); printf("\\n"); // Expected: 24,12,8,6
+    free(ra);
+
+    int b[] = {-1,1,0,-3,3}, szB;
+    int* rb = productExceptSelf(b, 5, &szB);
+    for (int i = 0; i < szB; i++) printf("%d%s", rb[i], i<szB-1?",":""); printf("\\n"); // Expected: 0,0,9,0,0
+    free(rb);
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> productExceptSelf(vector<int>& nums) {
+    // Write your solution here
+    return {};
+}
+
+int main() {
+    vector<int> a = {1,2,3,4};
+    for (int x : productExceptSelf(a)) cout << x << " "; cout << endl; // Expected: 24 12 8 6
+    vector<int> b = {-1,1,0,-3,3};
+    for (int x : productExceptSelf(b)) cout << x << " "; cout << endl; // Expected: 0 0 9 0 0
+    return 0;
 }`,
     },
     expectedOutput: {
       javascript: "[24,12,8,6]\n[0,0,9,0,0]",
       python: "[24, 12, 8, 6]\n[0, 0, 9, 0, 0]",
       java: "[24, 12, 8, 6]\n[0, 0, 9, 0, 0]",
+      c: "24,12,8,6\n0,0,9,0,0",
+      cpp: "24 12 8 6\n0 0 9 0 0",
     },
   },
 
@@ -698,11 +1069,47 @@ print(findMin([11,13,15,17]))    # Expected: 11`,
         System.out.println(findMin(new int[]{11,13,15,17}));   // Expected: 11
     }
 }`,
+      c: `#include <stdio.h>
+
+int findMin(int* nums, int numsSize) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    int a[] = {3,4,5,1,2};
+    printf("%d\\n", findMin(a, 5)); // Expected: 1
+    int b[] = {4,5,6,7,0,1,2};
+    printf("%d\\n", findMin(b, 7)); // Expected: 0
+    int c[] = {11,13,15,17};
+    printf("%d\\n", findMin(c, 4)); // Expected: 11
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int findMin(vector<int>& nums) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    vector<int> a = {3,4,5,1,2};
+    cout << findMin(a) << endl; // Expected: 1
+    vector<int> b = {4,5,6,7,0,1,2};
+    cout << findMin(b) << endl; // Expected: 0
+    vector<int> c = {11,13,15,17};
+    cout << findMin(c) << endl; // Expected: 11
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "1\n0\n11",
       python: "1\n0\n11",
       java: "1\n0\n11",
+      c: "1\n0\n11",
+      cpp: "1\n0\n11",
     },
   },
 
@@ -751,11 +1158,42 @@ print(lengthOfLongestSubstring("pwwkew"))    # Expected: 3`,
         System.out.println(lengthOfLongestSubstring("pwwkew"));   // Expected: 3
     }
 }`,
+      c: `#include <stdio.h>
+#include <string.h>
+
+int lengthOfLongestSubstring(char* s) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    printf("%d\\n", lengthOfLongestSubstring("abcabcbb")); // Expected: 3
+    printf("%d\\n", lengthOfLongestSubstring("bbbbb"));    // Expected: 1
+    printf("%d\\n", lengthOfLongestSubstring("pwwkew"));   // Expected: 3
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <string>
+using namespace std;
+
+int lengthOfLongestSubstring(string s) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    cout << lengthOfLongestSubstring("abcabcbb") << endl; // Expected: 3
+    cout << lengthOfLongestSubstring("bbbbb") << endl;    // Expected: 1
+    cout << lengthOfLongestSubstring("pwwkew") << endl;   // Expected: 3
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "3\n1\n3",
       python: "3\n1\n3",
       java: "3\n1\n3",
+      c: "3\n1\n3",
+      cpp: "3\n1\n3",
     },
   },
 
@@ -806,11 +1244,51 @@ class Solution {
         System.out.println(threeSum(new int[]{0,0,0}));           // Expected: [[0,0,0]]
     }
 }`,
+      c: `#include <stdio.h>
+#include <stdlib.h>
+
+// Returns a flat array of triplets; *returnSize = number of triplets
+int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes) {
+    // Write your solution here
+    *returnSize = 0;
+    return NULL;
+}
+
+int main() {
+    // For C, implement and print your triplets manually
+    printf("See your output above\\n");
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<vector<int>> threeSum(vector<int>& nums) {
+    // Write your solution here
+    return {};
+}
+
+int main() {
+    vector<int> a = {-1,0,1,2,-1,-4};
+    for (auto& t : threeSum(a)) {
+        cout << "[" << t[0] << "," << t[1] << "," << t[2] << "]";
+    }
+    cout << endl; // Expected: [-1,-1,2][-1,0,1]
+
+    vector<int> b = {0,0,0};
+    for (auto& t : threeSum(b)) {
+        cout << "[" << t[0] << "," << t[1] << "," << t[2] << "]";
+    }
+    cout << endl; // Expected: [0,0,0]
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: '[[-1,-1,2],[-1,0,1]]\n[]\n[[0,0,0]]',
       python: "[[-1, -1, 2], [-1, 0, 1]]\n[]\n[[0, 0, 0]]",
       java: "[[-1, -1, 2], [-1, 0, 1]]\n[]\n[[0, 0, 0]]",
+      c: "",
+      cpp: "[-1,-1,2][-1,0,1]\n[0,0,0]",
     },
   },
 
@@ -837,18 +1315,16 @@ class Solution {
 
 // Test cases
 console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]));
-// Expected: [["bat"],["nat","tan"],["ate","eat","tea"]] (order may vary)
-console.log(groupAnagrams([""]));  // Expected: [[""]]
-console.log(groupAnagrams(["a"])); // Expected: [["a"]]`,
+console.log(groupAnagrams([""]));
+console.log(groupAnagrams(["a"]));`,
       python: `def groupAnagrams(strs):
     # Write your solution here
     pass
 
 # Test cases
 print(groupAnagrams(["eat","tea","tan","ate","nat","bat"]))
-# Expected: [['bat'], ['nat', 'tan'], ['ate', 'eat', 'tea']] (order may vary)
-print(groupAnagrams([""]))   # Expected: [['']]
-print(groupAnagrams(["a"]))  # Expected: [['a']]`,
+print(groupAnagrams([""]))
+print(groupAnagrams(["a"]))`,
       java: `import java.util.*;
 
 class Solution {
@@ -863,11 +1339,46 @@ class Solution {
         System.out.println(groupAnagrams(new String[]{"a"}));
     }
 }`,
+      c: `#include <stdio.h>
+// Note: C does not have built-in hash maps.
+// Consider using sorted keys to group anagrams.
+
+void groupAnagrams(char** strs, int strsSize) {
+    // Write your solution here (print groups)
+}
+
+int main() {
+    char* a[] = {"eat","tea","tan","ate","nat","bat"};
+    groupAnagrams(a, 6);
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+using namespace std;
+
+vector<vector<string>> groupAnagrams(vector<string>& strs) {
+    // Write your solution here
+    return {};
+}
+
+int main() {
+    vector<string> a = {"eat","tea","tan","ate","nat","bat"};
+    for (auto& g : groupAnagrams(a)) {
+        for (auto& s : g) cout << s << " ";
+        cout << endl;
+    }
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "[['bat'],['nat','tan'],['ate','eat','tea']]\n[['']]\n[['a']]",
       python: "[['bat'], ['nat', 'tan'], ['ate', 'eat', 'tea']]\n[['']]\n[['a']]",
       java: "[[bat], [nat, tan], [ate, eat, tea]]\n[[]]\n[[a]]",
+      c: "",
+      cpp: "",
     },
   },
 
@@ -916,11 +1427,47 @@ print(coinChange([2], 3))           # Expected: -1`,
         System.out.println(coinChange(new int[]{2}, 3));          // Expected: -1
     }
 }`,
+      c: `#include <stdio.h>
+
+int coinChange(int* coins, int coinsSize, int amount) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    int a[] = {1,5,11,25};
+    printf("%d\\n", coinChange(a, 4, 36)); // Expected: 3
+    int b[] = {1,2,5};
+    printf("%d\\n", coinChange(b, 3, 11)); // Expected: 3
+    int c[] = {2};
+    printf("%d\\n", coinChange(c, 1, 3));  // Expected: -1
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int coinChange(vector<int>& coins, int amount) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    vector<int> a = {1,5,11,25};
+    cout << coinChange(a, 36) << endl; // Expected: 3
+    vector<int> b = {1,2,5};
+    cout << coinChange(b, 11) << endl; // Expected: 3
+    vector<int> c = {2};
+    cout << coinChange(c, 3) << endl;  // Expected: -1
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "3\n3\n-1",
       python: "3\n3\n-1",
       java: "3\n3\n-1",
+      c: "3\n3\n-1",
+      cpp: "3\n3\n-1",
     },
   },
 
@@ -971,11 +1518,49 @@ print(numIslands([["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","
         System.out.println(numIslands(new char[][]{{'1','1','0','0','0'},{'1','1','0','0','0'},{'0','0','1','0','0'},{'0','0','0','1','1'}})); // Expected: 3
     }
 }`,
+      c: `#include <stdio.h>
+
+int numIslands(char** grid, int gridSize, int* gridColSize) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    char row1_1[] = "11110", row1_2[] = "11010", row1_3[] = "11000", row1_4[] = "00000";
+    char* g1[] = {row1_1, row1_2, row1_3, row1_4};
+    int cols1[] = {5,5,5,5};
+    printf("%d\\n", numIslands(g1, 4, cols1)); // Expected: 1
+
+    char row2_1[] = "11000", row2_2[] = "11000", row2_3[] = "00100", row2_4[] = "00011";
+    char* g2[] = {row2_1, row2_2, row2_3, row2_4};
+    int cols2[] = {5,5,5,5};
+    printf("%d\\n", numIslands(g2, 4, cols2)); // Expected: 3
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int numIslands(vector<vector<char>>& grid) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    vector<vector<char>> g1 = {{'1','1','1','1','0'},{'1','1','0','1','0'},{'1','1','0','0','0'},{'0','0','0','0','0'}};
+    cout << numIslands(g1) << endl; // Expected: 1
+
+    vector<vector<char>> g2 = {{'1','1','0','0','0'},{'1','1','0','0','0'},{'0','0','1','0','0'},{'0','0','0','1','1'}};
+    cout << numIslands(g2) << endl; // Expected: 3
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "1\n3",
       python: "1\n3",
       java: "1\n3",
+      c: "1\n3",
+      cpp: "1\n3",
     },
   },
 
@@ -1024,11 +1609,45 @@ print(search([1], 0))               # Expected: -1`,
         System.out.println(search(new int[]{1}, 0));              // Expected: -1
     }
 }`,
+      c: `#include <stdio.h>
+
+int search(int* nums, int numsSize, int target) {
+    // Write your solution here
+    return -1;
+}
+
+int main() {
+    int a[] = {4,5,6,7,0,1,2};
+    printf("%d\\n", search(a, 7, 0)); // Expected: 4
+    printf("%d\\n", search(a, 7, 3)); // Expected: -1
+    int b[] = {1};
+    printf("%d\\n", search(b, 1, 0)); // Expected: -1
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int search(vector<int>& nums, int target) {
+    // Write your solution here
+    return -1;
+}
+
+int main() {
+    vector<int> a = {4,5,6,7,0,1,2};
+    cout << search(a, 0) << endl; // Expected: 4
+    cout << search(a, 3) << endl; // Expected: -1
+    vector<int> b = {1};
+    cout << search(b, 0) << endl; // Expected: -1
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "4\n-1\n-1",
       python: "4\n-1\n-1",
       java: "4\n-1\n-1",
+      c: "4\n-1\n-1",
+      cpp: "4\n-1\n-1",
     },
   },
 
@@ -1075,11 +1694,45 @@ class Solution {
         System.out.println(Arrays.toString(topKFrequent(new int[]{1}, 1)));            // Expected: [1]
     }
 }`,
+      c: `#include <stdio.h>
+#include <stdlib.h>
+
+int* topKFrequent(int* nums, int numsSize, int k, int* returnSize) {
+    // Write your solution here
+    *returnSize = k;
+    return (int*)calloc(k, sizeof(int));
+}
+
+int main() {
+    int a[] = {1,1,1,2,2,3}, szA;
+    int* ra = topKFrequent(a, 6, 2, &szA);
+    for (int i = 0; i < szA; i++) printf("%d ", ra[i]); printf("\\n"); // Expected: 1 2
+    free(ra);
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> topKFrequent(vector<int>& nums, int k) {
+    // Write your solution here
+    return {};
+}
+
+int main() {
+    vector<int> a = {1,1,1,2,2,3};
+    for (int x : topKFrequent(a, 2)) cout << x << " "; cout << endl; // Expected: 1 2
+    vector<int> b = {1};
+    for (int x : topKFrequent(b, 1)) cout << x << " "; cout << endl; // Expected: 1
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "[1,2]\n[1]",
       python: "[1, 2]\n[1]",
       java: "[1, 2]\n[1]",
+      c: "1 2\n1",
+      cpp: "1 2\n1",
     },
   },
 
@@ -1124,11 +1777,44 @@ print(canJump([3,2,1,0,4]))  # Expected: False`,
         System.out.println(canJump(new int[]{3,2,1,0,4})); // Expected: false
     }
 }`,
+      c: `#include <stdio.h>
+#include <stdbool.h>
+
+bool canJump(int* nums, int numsSize) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    int a[] = {2,3,1,1,4};
+    printf("%s\\n", canJump(a, 5) ? "true" : "false"); // Expected: true
+    int b[] = {3,2,1,0,4};
+    printf("%s\\n", canJump(b, 5) ? "true" : "false"); // Expected: false
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+bool canJump(vector<int>& nums) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    vector<int> a = {2,3,1,1,4};
+    cout << (canJump(a) ? "true" : "false") << endl; // Expected: true
+    vector<int> b = {3,2,1,0,4};
+    cout << (canJump(b) ? "true" : "false") << endl; // Expected: false
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "true\nfalse",
       python: "True\nFalse",
       java: "true\nfalse",
+      c: "true\nfalse",
+      cpp: "true\nfalse",
     },
   },
 
@@ -1189,11 +1875,54 @@ class Solution {
         System.out.println(Arrays.deepToString(m2)); // Expected: [[15, 13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7, 10, 11]]
     }
 }`,
+      c: `#include <stdio.h>
+
+void rotate(int** matrix, int matrixSize, int* matrixColSize) {
+    // Write your solution here (in-place)
+}
+
+void printMatrix(int** m, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) printf("%d ", m[i][j]);
+        printf("\\n");
+    }
+}
+
+int main() {
+    int r1[] = {1,2,3}, r2[] = {4,5,6}, r3[] = {7,8,9};
+    int* m1[] = {r1,r2,r3};
+    int cols1[] = {3,3,3};
+    rotate((int**)m1, 3, cols1);
+    printMatrix((int**)m1, 3); // Expected: 7 4 1 / 8 5 2 / 9 6 3
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+void rotate(vector<vector<int>>& matrix) {
+    // Write your solution here (in-place)
+}
+
+int main() {
+    vector<vector<int>> m1 = {{1,2,3},{4,5,6},{7,8,9}};
+    rotate(m1);
+    for (auto& row : m1) { for (int x : row) cout << x << " "; cout << endl; }
+    // Expected: 7 4 1 / 8 5 2 / 9 6 3
+
+    vector<vector<int>> m2 = {{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};
+    rotate(m2);
+    for (auto& row : m2) { for (int x : row) cout << x << " "; cout << endl; }
+    // Expected: 15 13 2 5 / 14 3 4 1 / 12 6 8 9 / 16 7 10 11
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "[[7,4,1],[8,5,2],[9,6,3]]\n[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]",
       python: "[[7, 4, 1], [8, 5, 2], [9, 6, 3]]\n[[15, 13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7, 10, 11]]",
       java: "[[7, 4, 1], [8, 5, 2], [9, 6, 3]]\n[[15, 13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7, 10, 11]]",
+      c: "7 4 1\n8 5 2\n9 6 3",
+      cpp: "7 4 1\n8 5 2\n9 6 3",
     },
   },
 
@@ -1240,11 +1969,43 @@ print(trap([4,2,0,3,2,5]))               # Expected: 9`,
         System.out.println(trap(new int[]{4,2,0,3,2,5}));              // Expected: 9
     }
 }`,
+      c: `#include <stdio.h>
+
+int trap(int* height, int heightSize) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    int a[] = {0,1,0,2,1,0,1,3,2,1,2,1};
+    printf("%d\\n", trap(a, 12)); // Expected: 6
+    int b[] = {4,2,0,3,2,5};
+    printf("%d\\n", trap(b, 6));  // Expected: 9
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int trap(vector<int>& height) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    vector<int> a = {0,1,0,2,1,0,1,3,2,1,2,1};
+    cout << trap(a) << endl; // Expected: 6
+    vector<int> b = {4,2,0,3,2,5};
+    cout << trap(b) << endl; // Expected: 9
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "6\n9",
       python: "6\n9",
       java: "6\n9",
+      c: "6\n9",
+      cpp: "6\n9",
     },
   },
 
@@ -1289,11 +2050,43 @@ print(findMedianSortedArrays([1,2], [3,4]))  # Expected: 2.5`,
         System.out.println(findMedianSortedArrays(new int[]{1,2}, new int[]{3,4})); // Expected: 2.5
     }
 }`,
+      c: `#include <stdio.h>
+
+double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size) {
+    // Write your solution here
+    return 0.0;
+}
+
+int main() {
+    int a[] = {1,3}, b[] = {2};
+    printf("%.1f\\n", findMedianSortedArrays(a, 2, b, 1)); // Expected: 2.0
+    int c[] = {1,2}, d[] = {3,4};
+    printf("%.1f\\n", findMedianSortedArrays(c, 2, d, 2)); // Expected: 2.5
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+    // Write your solution here
+    return 0.0;
+}
+
+int main() {
+    vector<int> a = {1,3}, b = {2};
+    cout << findMedianSortedArrays(a, b) << endl; // Expected: 2
+    vector<int> c = {1,2}, d = {3,4};
+    cout << findMedianSortedArrays(c, d) << endl; // Expected: 2.5
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "2\n2.5",
       python: "2.0\n2.5",
       java: "2.0\n2.5",
+      c: "2.0\n2.5",
+      cpp: "2\n2.5",
     },
   },
 
@@ -1345,11 +2138,48 @@ print(exist(board, "ABCB"))    # Expected: False`,
         System.out.println(exist(board, "ABCB"));   // Expected: false
     }
 }`,
+      c: `#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool exist(char** board, int boardSize, int* boardColSize, char* word) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    char r1[] = "ABCE", r2[] = "SFCS", r3[] = "ADEE";
+    char* board[] = {r1, r2, r3};
+    int cols[] = {4,4,4};
+    printf("%s\\n", exist(board, 3, cols, "ABCCED") ? "true" : "false"); // Expected: true
+    printf("%s\\n", exist(board, 3, cols, "SEE") ? "true" : "false");    // Expected: true
+    printf("%s\\n", exist(board, 3, cols, "ABCB") ? "true" : "false");   // Expected: false
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+bool exist(vector<vector<char>>& board, string word) {
+    // Write your solution here
+    return false;
+}
+
+int main() {
+    vector<vector<char>> board = {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
+    cout << (exist(board, "ABCCED") ? "true" : "false") << endl; // Expected: true
+    cout << (exist(board, "SEE") ? "true" : "false") << endl;    // Expected: true
+    cout << (exist(board, "ABCB") ? "true" : "false") << endl;   // Expected: false
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "true\ntrue\nfalse",
       python: "True\nTrue\nFalse",
       java: "true\ntrue\nfalse",
+      c: "true\ntrue\nfalse",
+      cpp: "true\ntrue\nfalse",
     },
   },
 
@@ -1398,11 +2228,47 @@ print(lengthOfLIS([7,7,7,7,7,7,7]))         # Expected: 1`,
         System.out.println(lengthOfLIS(new int[]{7,7,7,7,7,7,7}));        // Expected: 1
     }
 }`,
+      c: `#include <stdio.h>
+
+int lengthOfLIS(int* nums, int numsSize) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    int a[] = {10,9,2,5,3,7,101,18};
+    printf("%d\\n", lengthOfLIS(a, 8)); // Expected: 4
+    int b[] = {0,1,0,3,2,3};
+    printf("%d\\n", lengthOfLIS(b, 6)); // Expected: 4
+    int c[] = {7,7,7,7,7,7,7};
+    printf("%d\\n", lengthOfLIS(c, 7)); // Expected: 1
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int lengthOfLIS(vector<int>& nums) {
+    // Write your solution here
+    return 0;
+}
+
+int main() {
+    vector<int> a = {10,9,2,5,3,7,101,18};
+    cout << lengthOfLIS(a) << endl; // Expected: 4
+    vector<int> b = {0,1,0,3,2,3};
+    cout << lengthOfLIS(b) << endl; // Expected: 4
+    vector<int> c = {7,7,7,7,7,7,7};
+    cout << lengthOfLIS(c) << endl; // Expected: 1
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "4\n4\n1",
       python: "4\n4\n1",
       java: "4\n4\n1",
+      c: "4\n4\n1",
+      cpp: "4\n4\n1",
     },
   },
 
@@ -1451,11 +2317,71 @@ print(minWindow("a", "aa"))               # Expected: ""`,
         System.out.println(minWindow("a", "aa"));              // Expected: (empty)
     }
 }`,
+      c: `#include <stdio.h>
+#include <string.h>
+
+char* minWindow(char* s, char* t) {
+    // Write your solution here
+    return "";
+}
+
+int main() {
+    printf("%s\\n", minWindow("ADOBECODEBANC", "ABC")); // Expected: BANC
+    printf("%s\\n", minWindow("a", "a"));               // Expected: a
+    printf("%s\\n", minWindow("a", "aa"));              // Expected: (empty)
+    return 0;
+}`,
+      cpp: `#include <iostream>
+#include <string>
+using namespace std;
+
+string minWindow(string s, string t) {
+    // Write your solution here
+    return "";
+}
+
+int main() {
+    cout << minWindow("ADOBECODEBANC", "ABC") << endl; // Expected: BANC
+    cout << minWindow("a", "a") << endl;               // Expected: a
+    cout << minWindow("a", "aa") << endl;              // Expected: (empty)
+    return 0;
+}`,
     },
     expectedOutput: {
       javascript: "BANC\na\n",
       python: "BANC\na\n",
       java: "BANC\na\n",
+      c: "BANC\na\n",
+      cpp: "BANC\na\n",
     },
+  },
+};
+
+
+export const LANGUAGE_CONFIG = {
+  javascript: {
+    name: "JavaScript",
+    icon: "/javascript.png",
+    monacoLang: "javascript",
+  },
+  python: {
+    name: "Python",
+    icon: "/python.png",
+    monacoLang: "python",
+  },
+  java: {
+    name: "Java",
+    icon: "/java.png",
+    monacoLang: "java",
+  },
+  c: {
+    name: "C",
+    icon: "/c.png",
+    monacoLang: "cpp",
+  },
+  cpp: {
+    name: "C++",
+    icon: "/cpp.png",
+    monacoLang: "cpp",
   },
 };
