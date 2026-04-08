@@ -1,16 +1,24 @@
 import express from "express";
 import { protectRoute } from "../middleware/protectRoute.js";
-import { createSession, getActiveSessions, getMyRecentSessions, getSessionById, joinSession, endSession } from "../controllers/sessionController.js";
+import { 
+  createSession, 
+  getActiveSessions, 
+  getMyRecentSessions, 
+  getSessionById, 
+  joinSession, 
+  endSession 
+} from "../controllers/sessionController.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.post("/", protectRoute, createSession)
-router.get("/active", protectRoute, getActiveSessions)
-router.get("/my-recent", protectRoute, getMyRecentSessions)
+// 1. STATIC ROUTES (Must come first)
+router.post("/", protectRoute, createSession);
+router.get("/active", protectRoute, getActiveSessions);
+router.get("/recent", protectRoute, getMyRecentSessions);
 
-router.get("/:id", protectRoute, getSessionById)
-router.get("/:id/join", protectRoute, joinSession)
-router.post("/:id/end", protectRoute, endSession)
-
+// 2. DYNAMIC ROUTES
+router.get("/:id", protectRoute, getSessionById);
+router.post("/:id/join", protectRoute, joinSession); 
+router.post("/:id/end", protectRoute, endSession);
 
 export default router;

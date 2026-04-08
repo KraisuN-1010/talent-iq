@@ -7,6 +7,8 @@ import { getDifficultyBadgeClass } from "../lib/utils";
 
 const DIFFICULTIES = ["All", "Easy", "Medium", "Hard"];
 const problems = Object.values(PROBLEMS);
+import { useActiveSessions } from "../hooks/useSessions";
+
 
 const allTopics = (() => {
   const topicSet = new Set();
@@ -58,7 +60,7 @@ const ProblemsPage = () => {
   const easyCount   = problems.filter((p) => p.difficulty === "Easy").length;
   const mediumCount = problems.filter((p) => p.difficulty === "Medium").length;
   const hardCount   = problems.filter((p) => p.difficulty === "Hard").length;
-
+  const {data: activeSession, isLoading: loadingSession, error} = useActiveSessions()
   return (
     <div className="min-h-screen bg-base-200">
       <Navbar />
