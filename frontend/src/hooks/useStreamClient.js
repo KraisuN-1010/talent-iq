@@ -16,7 +16,7 @@ const useStreamClient = (session, loadingSession, isHost, isParticipant) => {
     let chatClientInstance = null;
 
     const initCall = async () => {
-      if (!session?.callId) return;
+      if (!session?.callID) return;
       if (!isHost && !isParticipant) return;
       if (session.status === "completed") return;
 
@@ -34,7 +34,7 @@ const useStreamClient = (session, loadingSession, isHost, isParticipant) => {
 
         setStreamClient(client);
 
-        videoCall = client.call("default", session.callId);
+        videoCall = client.call("default", session.callID);
         await videoCall.join({ create: true });
         setCall(videoCall);
 
@@ -51,7 +51,7 @@ const useStreamClient = (session, loadingSession, isHost, isParticipant) => {
         );
         setChatClient(chatClientInstance);
 
-        const chatChannel = chatClientInstance.channel("messaging", session.callId);
+        const chatChannel = chatClientInstance.channel("messaging", session.callID);
         await chatChannel.watch();
         setChannel(chatChannel);
       } catch (error) {
